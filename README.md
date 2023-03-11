@@ -13,3 +13,4 @@ Powered by:
 - [Prisma](https://prisma.io)
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
+- [Zustand](https://github.com/pmndrs/zustand)
