@@ -8,8 +8,7 @@ import { api } from '~/utils/api';
 const Home: NextPage = () => {
   const hello = api.example.hello.useQuery({ text: 'from tRPC' });
 
-  const bears = useStore((state) => state.bears);
-  const addBears = useStore((state) => state.increase);
+  const { bears, addBear, removeBear, incrementBy, decrementBy, resetBears } = useStore();
 
   return (
     <>
@@ -29,12 +28,38 @@ const Home: NextPage = () => {
           <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-[5rem]">
             {bears}
           </h1>
-          <button
-            className="rounded bg-white p-4"
-            onClick={addBears}
-          >
-            Add 1 Bear
-          </button>
+          <div className="flex w-1/2 flex-row justify-between">
+            <button
+              className="rounded bg-white p-4"
+              onClick={addBear}
+            >
+              Add 1 Bear
+            </button>
+            <button
+              className="rounded bg-white p-4"
+              onClick={removeBear}
+            >
+              Remove 1 Bear
+            </button>
+            <button
+              className="rounded bg-white p-4"
+              onClick={() => incrementBy(5)}
+            >
+              Add 5 Bears
+            </button>
+            <button
+              className="rounded bg-white p-4"
+              onClick={() => decrementBy(5)}
+            >
+              Remove 5 Bears
+            </button>
+            <button
+              className="rounded bg-white p-4"
+              onClick={resetBears}
+            >
+              Reset
+            </button>
+          </div>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
             <Link
               className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 text-white hover:bg-white/20"
